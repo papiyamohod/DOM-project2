@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; 
+    transition: opacity 0.5s ease; 
+  }
+  
+  .preloader.hide-preloader {
+    opacity: 0; 
+    visibility: hidden; 
+  }
+  
+  .preloader__item {
+    width: 100px; 
+    height: auto; 
+  }
+  
+  
+  header {
+    position: relative;
+  }
+  
+  .video-container {
+    width: 100%; 
+  }
+  
+  h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff; 
+    text-align: center;
+  }
+  
+  .switch-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.7); 
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .switch-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9); 
+  }
+  
+  .switch-btn span {
+    display: inline-block;
+    margin-right: 5px;
+  }
+  
+  .switch {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 17.3px;
+    border-color: transparent transparent transparent rgba(0, 0, 0, 0.7); 
+    transition: border-color 0.3s ease;
+  }
+  
+  .slide .switch {
+    border-color: transparent transparent transparent rgba(0, 0, 0, 0); 
+  }
+  
+    </style>
+  </head>
+  <body>
+    <div class="preloader">
+      <img src="preloader.gif" alt="preloader" class="preloader__item" />
+    </div>
+    <header>
+      <video controls muted autoplay loop class="video-container">
+        <source src="./video.mp4" type="video/mp4" />
+      </video>
+      <h1>video project</h1>
+      <button class="switch-btn">
+        <span>
+          play
+        </span>
+        <span>
+          pause
+        </span>
+        <span class="switch"></span>
+      </button>
+    </header>
+    <script>
+        const btn = document.querySelector(".switch-btn");
+        const video = document.querySelector(".video-container");
+        
+        btn.addEventListener("click", function () {
+          if (!btn.classList.contains("slide")) {
+            btn.classList.add("slide");
+            video.pause();
+          } else {
+            btn.classList.remove("slide");
+            video.play();
+          }
+        });
+        
+        const preloader = document.querySelector(".preloader");
+        
+        window.addEventListener("load", function () {
+          preloader.classList.add("hide-preloader");
+        });
+    </script>
+  </body>
+</html>

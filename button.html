@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Button in DOM</title>
+</head>
+<body>
+
+<div id="container">
+</div>
+
+<script>
+
+var button = document.createElement("button");
+
+button.innerHTML = "Click me";
+button.style.backgroundColor = "pink";
+button.style.color = "white";
+//button.style.backgroundColor = "blue";
+
+
+button.addEventListener("click", function() {
+  alert("Button clicked!");
+});
+
+var container = document.getElementById("container");
+container.appendChild(button);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Navbar</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <script>
+        
+const navLinks = [
+{ text: "Home", url: "#" },
+{ text: "About", url: "#about" },
+{ text: "Services", url: "#services" },
+{ text: "Contact", url: "#contact" }
+];
+
+function createNavbarLinkElement(link) {
+const linkElement = document.createElement("a");
+linkElement.textContent = link.text;
+linkElement.href = link.url;
+return linkElement;
+}
+
+
+function createNavbar(navLinks) {
+const navbar = document.getElementById("navbar");
+const navList = document.createElement("ul");
+
+navLinks.forEach(link => {
+    const listItem = document.createElement("li");
+    const linkElement = createNavbarLinkElement(link);
+    listItem.appendChild(linkElement);
+    navList.appendChild(listItem);
+});
+
+navbar.appendChild(navList);
+}
+
+createNavbar(navLinks);
+
+    </script>
+</body>
+</html>

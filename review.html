@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Reviews</title>
+</head>
+<body>
+   <h1>Customer Reviews</h1>
+   <div id="reviews-container"></div>
+
+   <script>
+const reviewsData = [
+{
+    name: "papiya mohod",
+    rating: 4,
+    comment: "Great product, very satisfied!"
+},
+{
+    name: "nikita pandav",
+    rating: 5,
+    comment: "Excellent service and fast delivery."
+},
+{
+    name: "riya verma",
+    rating: 3,
+    comment: "Product quality could be better."
+}
+];
+
+function createReviewElement(review) {
+const reviewElement = document.createElement("div");
+reviewElement.classList.add("review");
+
+const nameElement = document.createElement("p");
+nameElement.textContent = `Name: ${review.name}`;
+
+const ratingElement = document.createElement("p");
+ratingElement.textContent = `Rating: ${review.rating}`;
+
+const commentElement = document.createElement("p");
+commentElement.textContent = `Comment: ${review.comment}`;
+
+reviewElement.appendChild(nameElement);
+reviewElement.appendChild(ratingElement);
+reviewElement.appendChild(commentElement);
+
+return reviewElement;
+}
+
+function addReviewsToDOM(reviews) {
+const reviewsContainer = document.getElementById("reviews-container");
+reviews.forEach(review => {
+    const reviewElement = createReviewElement(review);
+    reviewsContainer.appendChild(reviewElement);
+});
+}
+
+addReviewsToDOM(reviewsData);
+
+   </script>
+</body>
+</html>

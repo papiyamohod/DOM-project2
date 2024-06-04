@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tabs</title>
+  <style>
+    .active {
+      display: block;
+    }
+    .content {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <section class="section">
+    <div class="title">
+      <h2>about</h2>
+      <p>
+        This article is about the pre-1947 history of the Indian subcontinent. For the post-1947 history of India, 
+        see History of India (1947–present). For the post-1947 history of the Indian subcontinent, see South Asia
+      </p>
+    </div>
+
+    <div class="about-center section-center">
+      <article class="about-img">
+        <img src="./hero-bcg.jpeg" alt="" />
+      </article>
+      <article class="about">
+        <div class="btn-container">
+          <button class="tab-btn active" data-id="history">history</button>
+          <button class="tab-btn" data-id="vision">vision</button>
+          <button class="tab-btn" data-id="goals">goals</button>
+        </div>
+        <div class="about-content">
+          <div class="content active" id="history">
+            <h4>history</h4>
+            <p>
+              Early modern human (EMH), or anatomically modern human (AMH),[1] are terms used to distinguish Homo sapiens 
+              (the only extant Hominina species) that are anatomically consistent with the range of phenotypes seen in contemporary humans, 
+              from extinct archaic human species. This distinction is useful especially for times and regions where anatomically modern and archaic 
+              humans co-existed, for example, in Paleolithic Europe
+            </p>
+          </div>
+          <div class="content" id="vision">
+            <h4>vision</h4>
+            <p>
+              The binomial name Homo sapiens was coined by Linnaeus, 1758.[10] The Latin noun homō (genitive hominis) means "human being", 
+              while the participle sapiēns means "discerning, wise, sensible".The species was initially thought to have emerged from a predecessor 
+              within the genus Homo around 300,000 to 200,000 years ago.[note 2] A problem with the morphological classification of "anatomically modern"
+              was that it would not have included certain extant populations.
+            </p>
+            <ul>
+              <li>list item</li>
+              <li>list item</li>
+              <li>list item</li>
+            </ul>
+          </div>
+          <div class="content" id="goals">
+            <h4>goals</h4>
+            <p>
+              Some sources show Neanderthals (H. neanderthalensis) as a subspecies (H. sapiens neanderthalensis).[21][22] Similarly, t
+              he discovered specimens of the H. rhodesiensis species have been classified by some as a subspecies (H. sapiens rhodesiensis), 
+              although it remains more common to treat these last two as separate species within the genus Homo rather than as subspecies within H. 
+              sapiens.[23]
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const btns = document.querySelectorAll(".tab-btn");
+      const articles = document.querySelectorAll(".content");
+      btns.forEach(btn => {
+        btn.addEventListener("click", function() {
+          const id = this.getAttribute("data-id");
+          btns.forEach(btn => btn.classList.remove("active"));
+          this.classList.add("active");
+          articles.forEach(article => article.classList.remove("active"));
+          document.getElementById(id).classList.add("active");
+        });
+      });
+    });
+  </script>
+</body>
+</html>
